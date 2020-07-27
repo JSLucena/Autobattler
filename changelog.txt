@@ -1,0 +1,12 @@
+V 0.0.1
+Changelog:
+-Added FOV to enemies/players
+-Added Stats
+-Added HP & MP bars
+
+
+WIP:
+-Attacks
+-Functional HP & MP bars
+-Other classes
+
