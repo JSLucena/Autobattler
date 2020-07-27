@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scenes/characters/Fighter.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/scripts/main.gd" type="Script" id=2]
+[ext_resource path="res://scenes/characters/monster.tscn" type="PackedScene" id=3]
+
+[node name="Node2D" type="Node2D"]
+position = Vector2( 2.86389, 1.43198 )
+script = ExtResource( 2 )
+
+[node name="Fighter" parent="." instance=ExtResource( 1 )]
+position = Vector2( 32.4576, 295.796 )
+
+[node name="monster" parent="." instance=ExtResource( 3 )]
+position = Vector2( 930.355, 296.566 )
+
+[node name="monster1" parent="." instance=ExtResource( 3 )]
+position = Vector2( 501.053, 422.106 )
