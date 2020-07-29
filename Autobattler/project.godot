@@ -9,10 +9,25 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Node",
+"class": "FSM",
+"language": "GDScript",
+"path": "res://assets/scripts/FSM.gd"
+}, {
+"base": "Resource",
+"class": "Skill",
+"language": "GDScript",
+"path": "res://assets/resources/Skills.gd"
+}, {
 "base": "Resource",
 "class": "Stats",
 "language": "GDScript",
 "path": "res://assets/resources/Stats.gd"
+}, {
+"base": "Node2D",
+"class": "char_skills",
+"language": "GDScript",
+"path": "res://assets/scripts/skills.gd"
 }, {
 "base": "Node2D",
 "class": "character",
@@ -22,15 +37,18 @@ _global_script_classes=[ {
 "base": "Node2D",
 "class": "fighter",
 "language": "GDScript",
-"path": "res://assets/scripts/Fighter.gd"
+"path": "res://assets/scripts/characters/Fighter.gd"
 }, {
 "base": "KinematicBody2D",
 "class": "monster1",
 "language": "GDScript",
-"path": "res://scenes/characters/monster.gd"
+"path": "res://assets/scripts/characters/monster.gd"
 } ]
 _global_script_class_icons={
+"FSM": "",
+"Skill": "",
 "Stats": "",
+"char_skills": "",
 "character": "",
 "fighter": "",
 "monster1": ""

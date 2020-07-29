@@ -1,3 +1,13 @@
+V 0.0.2
+changelog:
+-Added attack
+-Added functional bars
+-Added movement randomizer
+-Bugfixes
+
+
+
+
 V 0.0.1
 Changelog:
 -Added FOV to enemies/players
