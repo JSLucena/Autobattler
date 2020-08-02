@@ -2,6 +2,9 @@ extends KinematicBody2D
 
 class_name monster1
 
+onready var parent = get_parent()
+
+
 onready var FOV = $DetectionRange/shape
 onready var my_stats = $stats.stats
 onready var current_health = my_stats.max_health
@@ -74,13 +77,21 @@ func take_damage(damage):
 		current_health -= damage
 		$HPBar.update_health(current_health,old_health)
 		blink_when_damage()
+	elif (current_health - damage > 0):
+		current_health -= damage
+		$HPBar.update_health(current_health,old_health)
+		blink_when_damage()
+		die()
 	else:
 		die()
 		#queue_free()
 
 func die():
 	status = "dead"
+	
+	$Sprite.set_modulate(Color(1,0,0,0.1))
 	$hitbox.set_disabled(true)
+	parent.test_wincondition()
 
 func blink_when_damage():
 	$spriteBlinkTimer.set_wait_time(0.5)
@@ -97,3 +108,4 @@ func blink_when_damage():
 func _on_spriteBlinkTimer_timeout():
 	$Sprite.set_modulate(Color(1,0,0,0.5))
 	pass # Replace with function body.
+	

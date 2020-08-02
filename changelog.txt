@@ -1,12 +1,21 @@
+WIP:
+-Allies & Enemies
+-Other classes
+
+V 0.0.3
+changelog:
+-Added endgame screen, with retry and exit options
+-Reworked damage handling, now it is done character side
+-Reworked target search, now it always gets the closest by default
+-Bugfixes 
+
+
 V 0.0.2
 changelog:
 -Added attack
 -Added functional bars
 -Added movement randomizer
 -Bugfixes
-
-
-
 
 V 0.0.1
 Changelog:
@@ -15,8 +24,5 @@ Changelog:
 -Added HP & MP bars
 
 
-WIP:
--Attacks
--Functional HP & MP bars
--Other classes
+
 

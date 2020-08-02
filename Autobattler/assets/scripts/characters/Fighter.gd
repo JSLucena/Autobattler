@@ -3,6 +3,7 @@ extends Node2D
 class_name fighter
 
 signal damage(value, target)
+
 onready var FOV = $DetectionRange/shape
 onready var my_stats = $stats.stats
 onready var current_health = my_stats.max_health
@@ -76,20 +77,43 @@ func _on_DetectionRange_body_entered(body):
 func _on_DetectionRange_body_exited(body):
 	if body != self: #exclude self
 		print(body.get_name(), " left")
-		in_range = false
+		if $DetectionRange.get_overlapping_bodies().size() <= 1: #if there are more than one enemy around
+			in_range = false
 	
 func attack(skill, target):
-	emit_signal("damage",skill.base_damage,target)
+	
+	target.take_damage(skill.base_damage)
 	
 func take_damage(damage):
 	var old_health = current_health
 	if(current_health > 0):
 		current_health -= damage
+		blink_when_damage()
 		$HPBar.update_health(current_health,old_health)
+	elif (current_health - damage > 0):
+		current_health -= damage
+		$HPBar.update_health(current_health,old_health)
+		blink_when_damage()
+		die()
 	else:
 		die()
-		queue_free()
 
 func die():
 	status = "dead"
 	$hitbox.disabled(true)
+
+func blink_when_damage():
+	$spriteBlinkTimer.set_wait_time(0.5)
+	$spriteBlinkTimer.set_one_shot(true)
+	$spriteBlinkTimer.start()
+	
+	$Sprite.set_modulate(Color(1,0,0,1))
+
+
+
+
+
+
+func _on_spriteBlinkTimer_timeout():
+	$Sprite.set_modulate(Color(1,0,0,0.5))
+	pass # Replace with function body.

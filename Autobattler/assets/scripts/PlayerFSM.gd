@@ -10,6 +10,7 @@ var next_move
 var position
 var basic
 var atk_timer
+var next_skill
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	
@@ -38,7 +39,7 @@ func _state_logic(delta): ##in-state logic
 	
 	match state:
 		states.idle:
-			parent.velocity = Vector2(20,0)
+			parent.velocity = Vector2(0,0)
 			pass
 		states.acquiring_target:
 			
@@ -51,7 +52,7 @@ func _state_logic(delta): ##in-state logic
 		states.attack:
 			if atk_timer.is_stopped():
 				atk_timer.start()
-				parent.attack(parent.my_skills[0],target)
+				parent.attack(next_skill,target)
 				
 			
 				
@@ -98,14 +99,16 @@ func _enter_state(new_state, old_state): ##enter state logic
 			parent.get_node("Debug").set_text("target acquired")
 			next_move = (target.get_global_position() - position).normalized() 
 			parent.velocity = next_move * parent.my_stats.speed
-			set_raycast()	
+			set_raycast()
 			pass
 		states.attack:
+			next_skill = get_skill()
 			parent.get_node("Debug").set_text("attack")
 			set_atkCD()
-			parent.attack(parent.my_skills[0],target)
+			parent.attack(next_skill,target)
 			atk_timer.start()
 			parent.get_node("wanderTimer").start()
+			
 			pass
 func _exit_state(old_state, new_state): ##exit state logic
 	match old_state:
@@ -140,12 +143,28 @@ func set_atkCD():
 	
 func get_next_target():
 	var inside =  parent.get_node("DetectionRange").get_overlapping_bodies() #gets all bodies within reach
+	#get closest target
+	var closest = inside[1]
+	var closest_pos = closest.get_global_position() 
+	######
 	for i in inside:
-		if i.get_name() != parent.get_name():
-			if i.status != "dead":
-				return i
 		
-
+		if i.get_name() != parent.get_name():
+		
+			if i.status != "dead":
+				###### get closest target
+				var i_pos = i.get_global_position()
+				if(closest_pos - position) > (i_pos - position):
+					closest = i
+					closest_pos = i_pos
+				##########
+				
+	return closest
+		
+func get_skill():
+	
+	return parent.my_skills[0]
+	pass
 
 func _on_wanderTimer_timeout():
 	var angle = randi() % 360
