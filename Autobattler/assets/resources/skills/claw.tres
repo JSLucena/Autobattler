@@ -1,0 +1,13 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://assets/resources/Skills.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+skill_name = "Claw"
+skill_description = " Basic Attack"
+mana_cost = 0
+base_damage = 5
+damage_type = "type"
+skill_range = 64
+cooldown = 3

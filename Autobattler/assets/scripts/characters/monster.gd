@@ -11,7 +11,7 @@ onready var current_health = my_stats.max_health
 onready var current_mana = my_stats.max_mana
 
 
-var status = "alive"
+var alive = true
 
 
 
@@ -46,11 +46,11 @@ func _process(delta):
 
 
 ### Debug
-func _draw():
-	if in_range == true:
-		draw_circle($Sprite.get_position(), my_stats.view_distance, Color( 1, 0, 0, 0.2 )) #FOV drawing
-	else:
-		draw_circle($Sprite.get_position(), my_stats.view_distance, Color( 0.37, 0.62, 0.63, 0.2 )) #FOV drawing
+#func _draw():
+#	if in_range == true:
+#		draw_circle($Sprite.get_position(), my_stats.view_distance, Color( 1, 0, 0, 0.2 )) #FOV drawing
+#	else:
+#		draw_circle($Sprite.get_position(), my_stats.view_distance, Color( 0.37, 0.62, 0.63, 0.2 )) #FOV drawing
 #########
 
 
@@ -77,21 +77,16 @@ func take_damage(damage):
 		current_health -= damage
 		$HPBar.update_health(current_health,old_health)
 		blink_when_damage()
-	elif (current_health - damage > 0):
-		current_health -= damage
-		$HPBar.update_health(current_health,old_health)
-		blink_when_damage()
-		die()
-	else:
+	if current_health <= 0:
 		die()
 		#queue_free()
 
 func die():
-	status = "dead"
+	alive = false
 	
 	$Sprite.set_modulate(Color(1,0,0,0.1))
 	$hitbox.set_disabled(true)
-	parent.test_wincondition()
+	parent.test_winCondition(self)
 
 func blink_when_damage():
 	$spriteBlinkTimer.set_wait_time(0.5)

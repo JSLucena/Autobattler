@@ -3,16 +3,15 @@
 [ext_resource path="res://assets/UI/HPbar.png" type="Texture" id=1]
 [ext_resource path="res://assets/scripts/HPBar.gd" type="Script" id=2]
 
-
 [node name="HPBar" type="Control"]
 anchor_left = -0.116
 anchor_top = -0.293
-anchor_right = 0.047
-anchor_bottom = -0.26
+anchor_right = 0.001
+anchor_bottom = -0.273
 margin_left = -0.216003
 margin_top = -0.199997
-margin_right = -0.128002
-margin_bottom = 1.52588e-05
+margin_right = -0.024
+margin_bottom = -0.199997
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -21,9 +20,9 @@ __meta__ = {
 [node name="HP_Under" type="TextureProgress" parent="."]
 anchor_right = 1.01
 anchor_bottom = 1.0
-margin_right = 72.33
-margin_bottom = 20.0
-rect_scale = Vector2( 0.7, 0.5 )
+margin_right = 118.8
+margin_bottom = 30.0
+rect_scale = Vector2( 0.5, 0.3 )
 texture_under = ExtResource( 1 )
 texture_progress = ExtResource( 1 )
 tint_under = Color( 0.227451, 0.227451, 0.227451, 1 )
@@ -38,7 +37,7 @@ anchor_bottom = 1.0
 margin_left = -2.0
 margin_right = 73.163
 margin_bottom = 20.0
-rect_scale = Vector2( 0.7, 0.5 )
+rect_scale = Vector2( 0.5, 0.3 )
 texture_progress = ExtResource( 1 )
 tint_progress = Color( 0.113725, 0.427451, 0, 1 )
 __meta__ = {
@@ -46,12 +45,14 @@ __meta__ = {
 }
 
 [node name="curHP" type="Label" parent="."]
-anchor_right = 0.354
-anchor_bottom = 1.0
-margin_left = 2.51233
-margin_top = 3.17255
-margin_right = -1.09576
-margin_bottom = -2.82745
+anchor_left = 0.023
+anchor_right = 0.25
+anchor_bottom = 0.863
+margin_left = -0.00984764
+margin_top = 0.556458
+margin_right = 11.6221
+margin_bottom = 4.20046
+rect_scale = Vector2( 0.7, 0.7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

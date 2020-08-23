@@ -6,11 +6,11 @@
 script = ExtResource( 1 )
 name_class = "class"
 max_health = 40
-max_mana = 60
-view_distance = 960
-speed = 384
+max_mana = 40
+view_distance = 1280
+speed = 256
 STR = 10
-DEX = 10
-CON = 10
-WIS = 10
+DEX = 20
+CON = 14
+WIS = 18
 INT = 10

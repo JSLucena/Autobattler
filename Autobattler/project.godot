@@ -60,6 +60,11 @@ config/name="Autobattler"
 run/main_scene="res://scenes/main.tscn"
 config/icon="res://icon.png"
 
+[display]
+
+window/size/width=1600
+window/size/height=1050
+
 [rendering]
 
 environment/default_environment="res://default_env.tres"

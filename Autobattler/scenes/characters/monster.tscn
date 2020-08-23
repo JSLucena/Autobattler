@@ -10,12 +10,12 @@
 extents = Vector2( 32.1086, 32.1113 )
 
 [node name="monster1" type="KinematicBody2D"]
-collision_layer = 33
-collision_mask = 32
+collision_layer = 32
+collision_mask = 33
 script = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="."]
-modulate = Color( 0.67451, 0, 0, 0.498039 )
+self_modulate = Color( 0.6, 0, 0, 0.784314 )
 texture = ExtResource( 1 )
 
 [node name="hitbox" type="CollisionShape2D" parent="."]
@@ -42,6 +42,8 @@ script = ExtResource( 4 )
 starting_stats = ExtResource( 5 )
 
 [node name="DetectionRange" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 33
 
 [node name="shape" type="CollisionShape2D" parent="DetectionRange"]
 
